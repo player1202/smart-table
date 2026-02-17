@@ -2,8 +2,8 @@ import { makeIndex } from "./lib/utils.js";
 const BASE_URL = 'https://webinars.webdev.education-services.ru/sp7-api';
 
 export function initData(sourceData) {
-    const sellers = makeIndex(sourceData.sellers, 'id', v => `${v.first_name} ${v.last_name}`);
-    const customers = makeIndex(sourceData.customers, 'id', v => `${v.first_name} ${v.last_name}`);
+    let sellers = makeIndex(sourceData.sellers, 'id', v => `${v.first_name} ${v.last_name}`);
+    let customers = makeIndex(sourceData.customers, 'id', v => `${v.first_name} ${v.last_name}`);
 
     // функция для приведения строк в тот вид, который нужен нашей таблице
     const mapRecords = (data) => data.map(item => ({
