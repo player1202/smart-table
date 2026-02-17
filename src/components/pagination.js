@@ -11,7 +11,6 @@ export const initPagination = (
   let pageCount;
 
   const applyPagination = (query, state, action) => {
-    // @todo: #2.1 — взять параметры пагинации из state
     const limit = state.rowsPerPage;
     let page = state.page;
 
@@ -33,13 +32,13 @@ export const initPagination = (
       }
 
     return Object.assign({}, query, {
+      // добавим параметры к query, но не изменяем исходный объект
       limit,
       page,
     });
   };
 
   const updatePagination = (total, { page, limit }) => {
-    // @todo: #2.1 — вычислить количество страниц
     pageCount = Math.ceil(total / limit);
 
     // @todo: #2.4 — получить список видимых страниц и вывести их
@@ -58,7 +57,7 @@ export const initPagination = (
   };
 
   return {
-    applyPagination,
     updatePagination,
+    applyPagination,
   };
 };
