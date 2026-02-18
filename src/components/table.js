@@ -12,23 +12,17 @@ export function initTable(settings, onAction) {
   const root = cloneTemplate(tableTemplate);
 
   // @todo: #1.2 —  вывести дополнительные шаблоны до и после таблицы
- if (Array.isArray(before)) {
-    console.log("Adding BEFORE templates:", before);
+  if (Array.isArray(before)) {
     before.reverse().forEach((subName) => {
-      console.log(`  - Cloning ${subName}...`);
       root[subName] = cloneTemplate(subName);
-      console.log(`  - ${subName} cloned, prepending...`);
       root.container.prepend(root[subName].container);
     });
   }
 
   // Добавляем шаблоны ПОСЛЕ таблицы
   if (Array.isArray(after)) {
-    console.log("Adding AFTER templates:", after);
     after.forEach((subName) => {
-      console.log(`  - Cloning ${subName}...`);
       root[subName] = cloneTemplate(subName);
-      console.log(`  - ${subName} cloned, appending...`);
       root.container.append(root[subName].container);
     });
   }
